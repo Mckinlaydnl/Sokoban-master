@@ -47,6 +47,9 @@
     <ClCompile Include="Storage.cpp">
       <Filter>Game Code</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -78,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="Storage.h">
       <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Game Code</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
