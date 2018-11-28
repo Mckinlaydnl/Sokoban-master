@@ -5,5 +5,5 @@
 Storage::Storage()
 	: GridObject()
 {
-	m_sprite.setTexture(AssetManager::GetTexture("graphics/box.png"));
+	m_sprite.setTexture(AssetManager::GetTexture("graphics/storage.png"));
 }
