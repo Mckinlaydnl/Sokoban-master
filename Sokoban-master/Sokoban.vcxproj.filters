@@ -44,6 +44,9 @@
     <ClCompile Include="Wall.cpp">
       <Filter>Game Code</Filter>
     </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>Game Code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -72,6 +75,9 @@
     </ClInclude>
     <ClInclude Include="Wall.h">
       <Filter>Game Code</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>Framework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

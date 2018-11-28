@@ -4,7 +4,7 @@ W - E - - C H C - - K - W
 W - - - - - C - - - - - W
 W - - - - C - - - - - - W
 W H - - H - - - - - - - W
-W - - - H - - - - - - - W
+W - - - H - - S - - - - W
 W C C - H - - - - - P - W
 W C C - - C - - - - - - W
 W C C - - C - - - - - - W
