@@ -6,9 +6,10 @@
 Player:: Player()
 	: GridObject()
 	, m_pendingMove(0,0)
-
+	, m_playerSound()
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/player/playerStandDown.png"));
+	m_playerSound.setBuffer(AssetManager::GetSoundBuffer("audio/footstep1.ogg"));
 }
 
 void Player::Input(sf::Event _gameEvent)
@@ -28,7 +29,6 @@ void Player::Input(sf::Event _gameEvent)
 			// Move Up
 			m_pendingMove = sf::Vector2i(0, -1);
 			m_sprite.setTexture(AssetManager::GetTexture("graphics/player/playerStandUp.png"));
-			
 		}
 		else if (_gameEvent.key.code == sf::Keyboard::A)
 		{
@@ -49,7 +49,7 @@ void Player::Input(sf::Event _gameEvent)
 			// It was S!
 			// Move Right
 			m_pendingMove = sf::Vector2i(1, 0);
-			m_sprite.setTexture(AssetManager::GetTexture("graphics/player/playerStandRight.png"));
+			m_sprite.setTexture(AssetManager::GetTexture("graphics/player/playerStandRight.png"));	
 		}
 	}
 }
@@ -60,8 +60,14 @@ void Player::Update(sf::Time _frameTime)
 	if (m_pendingMove.x != 0 || m_pendingMove.y != 0)
 	{
 		// move in that direction
-		AttemptMove(m_pendingMove);
-
+		bool moveSuccessful = AttemptMove(m_pendingMove);
+		
+		// Play movement sound
+		if (moveSuccessful == true)
+		{
+			m_playerSound.play();
+		}
+	
 		// and clear the pending movement
 		m_pendingMove = sf::Vector2i(0, 0);
 	}
@@ -76,7 +82,7 @@ bool Player::AttemptMove(sf::Vector2i _direction)
 	sf::Vector2i targetPos = m_gridPosition + _direction;
 
 	// TODO:  Check if the space is empty
-
+	
 	// If empty, move there
 	return m_level->MoveObjectTo(this, targetPos);
 }
