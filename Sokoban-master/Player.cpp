@@ -5,6 +5,8 @@
 
 Player:: Player()
 	: GridObject()
+	, m_pendingMove(0,0)
+
 {
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/player/playerStandDown.png"));
 }
@@ -24,26 +26,40 @@ void Player::Input(sf::Event _gameEvent)
 		{
 			// It was W!
 			// Move Up
-			AttemptMove(sf::Vector2i(0,-1));
+			m_pendingMove = sf::Vector2i(0, -1);
+			
 		}
 		else if (_gameEvent.key.code == sf::Keyboard::A)
 		{
 			// It was A!
 			// Move Left
-			AttemptMove(sf::Vector2i(-1,0));
+			m_pendingMove = sf::Vector2i(-1, 0);
 		}
 		else if (_gameEvent.key.code == sf::Keyboard::S)
 		{
 			// It was S!
 			// Move Down
-			AttemptMove(sf::Vector2i(0, 1));
+			m_pendingMove = sf::Vector2i(0, 1);
 		}
-		else if (_gameEvent.key.code == sf::Keyboard::S)
+		else if (_gameEvent.key.code == sf::Keyboard::D)
 		{
 			// It was S!
 			// Move Right
-			AttemptMove(sf::Vector2i(0, 1));
+			m_pendingMove = sf::Vector2i(1, 0);
 		}
+	}
+}
+
+void Player::Update(sf::Time _frameTime)
+{
+	// If we have movement waiting to be processed,
+	if (m_pendingMove.x != 0 || m_pendingMove.y != 0)
+	{
+		// move in that direction
+		AttemptMove(m_pendingMove);
+
+		// and clear the pending movement
+		m_pendingMove = sf::Vector2i(0, 0);
 	}
 }
 
