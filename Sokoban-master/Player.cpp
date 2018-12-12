@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Framework/AssetManager.h"
 #include "Level.h"
+#include "Box.h"
 
 Player:: Player()
 	: GridObject()
@@ -12,6 +13,7 @@ Player:: Player()
 	m_sprite.setTexture(AssetManager::GetTexture("graphics/player/playerStandDown.png"));
 	m_playerSound.setBuffer(AssetManager::GetSoundBuffer("audio/footstep1.ogg"));
 	m_hitWall.setBuffer(AssetManager::GetSoundBuffer("audio/bump.wav"));
+	m_pushBox.setBuffer(AssetManager::GetSoundBuffer("audio/push.wav"));
 }
 
 void Player::Input(sf::Event _gameEvent)
@@ -90,19 +92,43 @@ bool Player::AttemptMove(sf::Vector2i _direction)
 
 	// Check if any of those objects block movement
 	bool blocked = false;
+	GridObject* blocker = nullptr;
 	for (int i = 0; i < targetCellContents.size(); ++i)
 	{
 		if (targetCellContents[i]->GetBlocksMovement() == true)
 		{
 			blocked = true;
-			m_hitWall.play();
+			blocker = targetCellContents[i];
 		}
 	}
 	
 	// If empty, move there
 	if (blocked == false)
+	{
 		return m_level->MoveObjectTo(this, targetPos);
+	}
+	else
+	{
+		// We were blocked!
+		// Can we push the thing blocking us?
+		// Do a dynamic cast to a box to see if we can push it
+		Box* pushableBox = dynamic_cast<Box*>(blocker);
 
+		// If so (the thing is a box ( not nullptr))
+		if (pushableBox != nullptr)
+		{
+			// Attempt to push
+			bool pushSucceeded = pushableBox->AttemptPush(_direction);
+			// If push succeeded
+			if (pushSucceeded == true)
+			{
+				m_pushBox.play();
+				// Move to new spot (where blocker was)
+				return m_level->MoveObjectTo(this, targetPos);
+				
+			}
+		}
+	}
 	// if movement is blocked, do nothing, return false
 	// Default
 	return false;

@@ -32,5 +32,6 @@ private:
 	sf::Vector2i m_pendingMove;
 	sf::Sound m_playerSound;
 	sf::Sound m_hitWall;
+	sf::Sound m_pushBox;
 	
 };

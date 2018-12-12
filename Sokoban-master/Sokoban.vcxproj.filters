@@ -12,6 +12,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{8c283a40-a533-482a-9f23-6c46d78619d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -50,6 +53,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Game Code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Animation.h">
@@ -85,5 +91,13 @@
     <ClInclude Include="Player.h">
       <Filter>Game Code</Filter>
     </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Game Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="levels\Level1.txt">
+      <Filter>Levels</Filter>
+    </Text>
   </ItemGroup>
 </Project>

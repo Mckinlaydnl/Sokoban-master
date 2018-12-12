@@ -2,7 +2,7 @@ W W W W W W W W W W W W W
 W - - - - - C - - - - - W
 W - E - - C H C - - K - W
 W - - - - - C - - - - - W
-W - - - - C - - - - - - W
+W - - - - C - - - B - - W
 W H - - H - - - - - - - W
 W - - - H - - S - - - - W
 W C C - H - - - - - P - W
