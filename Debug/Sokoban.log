@@ -1,0 +1,3 @@
+﻿  Player.cpp
+c:\users\0809903\source\repos\sokoban-master\sokoban-master\player.cpp(96): warning C4018: '<': signed/unsigned mismatch
+  Sokoban.vcxproj -> C:\Users\0809903\source\repos\Sokoban-master\Sokoban-master\Debug\Sokoban.exe
